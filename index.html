@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maickol — Artista 3D</title>
+  <meta name="description" content="Portfolio de modelado y animación 3D para videojuegos y VR.">
+
+  <!-- Tipografías: Fraunces (títulos), Inter (cuerpo), Space Mono (datos técnicos), Comfortaa (solo el logo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Space+Mono&family=Comfortaa:wght@600&display=swap">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===================== HEADER / NAV ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#hero" class="wordmark">maickol.3d</a>
+
+      <nav class="main-nav" id="main-nav">
+        <a href="#modelado">Modelado</a>
+        <a href="#animacion">Animación</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="hero" class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Modelado &amp; animación 3D · Videojuegos y VR</p>
+      <!-- Titular en decisión final (encuesta pendiente). Alternativas por si cambias de opinión:
+           "Arte con alma, hecho a mano, polígono a polígono."
+           "Historias en 3D, hechas con alma y sin atajos." -->
+      <h1>Donde cada pieza empieza en <br>el corazón, no en el mouse.</h1>
+      <p class="hero-sub">
+        Estudiante de Realidad Virtual y Diseño de Juegos Digitales (UBO), especializado en modelado y animación 3D estilizada.
+      </p>
+      <a href="#modelado" class="btn btn-primary">Ver mi trabajo</a>
+    </div>
+
+    <div class="hero-visual">
+      <!-- REEMPLAZAR: tu mejor render aquí. Cambia este div por:
+           <img src="assets/hero-pieza.jpg" alt="Nombre de tu pieza destacada"> -->
+      <div class="blob blob-1 placeholder-media">
+        <span>Tu mejor render aquí</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MODELADO (galería) ===================== -->
+  <section id="modelado" class="section">
+    <div class="section-head">
+      <p class="eyebrow">Portafolio</p>
+      <h2>Modelado 3D</h2>
+    </div>
+
+    <div class="gallery-grid" id="gallery-grid">
+
+      <!-- ===== TARJETA DE PIEZA (repite este bloque por cada modelo, 5-8 en total) =====
+           Cambia los data-* por el contenido real de cada pieza cuando lo tengas.
+           data-artstation y data-sketchfab: pega el link específico de ESA pieza (no tu perfil general). -->
+      <article class="project-card"
+        data-title="Nombre de la pieza 1"
+        data-desc="Descripción corta: qué es, para qué proyecto, qué hiciste tú (modelado, texturizado, rig, etc)."
+        data-tools="Blender"
+        data-artstation="#"
+        data-sketchfab="#">
+        <div class="blob blob-2 placeholder-media"><span>Pieza 1</span></div>
+        <div class="card-caption">
+          <h3>Nombre de la pieza 1</h3>
+          <span class="tag">Blender</span>
+        </div>
+      </article>
+
+      <article class="project-card"
+        data-title="Nombre de la pieza 2"
+        data-desc="Descripción corta de la pieza 2."
+        data-tools="Blender"
+        data-artstation="#"
+        data-sketchfab="#">
+        <div class="blob blob-3 placeholder-media"><span>Pieza 2</span></div>
+        <div class="card-caption">
+          <h3>Nombre de la pieza 2</h3>
+          <span class="tag">Blender</span>
+        </div>
+      </article>
+
+      <article class="project-card"
+        data-title="Nombre de la pieza 3"
+        data-desc="Modelo hecho en Blender e integrado en Unity para el juego online que desarrollaste. REEMPLAZAR con el nombre real del proyecto y tu rol específico."
+        data-tools="Blender · Unity"
+        data-artstation="#"
+        data-sketchfab="#">
+        <div class="blob blob-1 placeholder-media"><span>Pieza 3</span></div>
+        <div class="card-caption">
+          <h3>Nombre de la pieza 3</h3>
+          <span class="tag">Blender · Unity</span>
+        </div>
+      </article>
+
+      <article class="project-card"
+        data-title="Nombre de la pieza 4"
+        data-desc="Descripción corta de la pieza 4."
+        data-tools="Blender"
+        data-artstation="#"
+        data-sketchfab="#">
+        <div class="blob blob-2 placeholder-media"><span>Pieza 4</span></div>
+        <div class="card-caption">
+          <h3>Nombre de la pieza 4</h3>
+          <span class="tag">Blender</span>
+        </div>
+      </article>
+
+      <article class="project-card"
+        data-title="Nombre de la pieza 5"
+        data-desc="Descripción corta de la pieza 5."
+        data-tools="Blender"
+        data-artstation="#"
+        data-sketchfab="#">
+        <div class="blob blob-3 placeholder-media"><span>Pieza 5</span></div>
+        <div class="card-caption">
+          <h3>Nombre de la pieza 5</h3>
+          <span class="tag">Blender</span>
+        </div>
+      </article>
+
+      <article class="project-card"
+        data-title="Nombre de la pieza 6"
+        data-desc="Descripción corta de la pieza 6."
+        data-tools="Blender"
+        data-artstation="#"
+        data-sketchfab="#">
+        <div class="blob blob-1 placeholder-media"><span>Pieza 6</span></div>
+        <div class="card-caption">
+          <h3>Nombre de la pieza 6</h3>
+          <span class="tag">Blender</span>
+        </div>
+      </article>
+      <!-- ===== FIN bloque repetible ===== -->
+
+    </div>
+  </section>
+
+  <!-- ===================== ANIMACIÓN ===================== -->
+  <section id="animacion" class="section section-alt">
+    <div class="section-head">
+      <p class="eyebrow">Reel</p>
+      <h2>Animación</h2>
+    </div>
+
+    <div class="animation-grid">
+
+      <!-- ===== PIEZA DE ANIMACIÓN 1 ===== -->
+      <div class="animation-feature">
+        <!-- REEMPLAZAR: cambia este div por tu video, por ejemplo:
+             <video controls poster="assets/animacion-1-poster.jpg">
+               <source src="assets/animacion-1.mp4" type="video/mp4">
+             </video>
+             o un iframe embed de YouTube/Vimeo si lo subes ahí. -->
+        <div class="blob blob-2 placeholder-media placeholder-video">
+          <span>Video de animación 1</span>
+        </div>
+        <div class="animation-text">
+          <h3>Nombre de la pieza animada 1</h3>
+          <p><!-- REEMPLAZAR: qué hiciste tú específicamente en esta pieza (animación, rig, ambos). --></p>
+        </div>
+      </div>
+
+      <!-- ===== PIEZA DE ANIMACIÓN 2 ===== -->
+      <div class="animation-feature">
+        <div class="blob blob-3 placeholder-media placeholder-video">
+          <span>Video de animación 2</span>
+        </div>
+        <div class="animation-text">
+          <h3>Nombre de la pieza animada 2</h3>
+          <p><!-- REEMPLAZAR: qué hiciste tú específicamente en esta pieza. --></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== SOBRE MÍ ===================== -->
+  <section id="sobre-mi" class="section about">
+    <div class="about-visual">
+      <!-- REEMPLAZAR: una foto tuya o un autorretrato/ilustración -->
+      <img class="blob blob-3" src="assets/foto-maickol.jpg" alt="Foto de Maickol">
+    </div>
+    <div class="about-text">
+      <p class="eyebrow">Sobre mí</p>
+      <h2>Hola, soy Maickol</h2>
+      <p>
+        Soy estudiante de Ingeniería en Realidad Virtual y Diseño de Juegos Digitales (UBO), con un perfil
+        marcadamente artístico. Me especializo en modelado y animación 3D estilizada, cubriendo el proceso
+        completo: desde el boceto hasta el rig. También programo en Unity con C#, llevando mis propios
+        modelos hasta el motor.
+      </p>
+      <div class="skills-row">
+        <span class="tag">Blender</span>
+        <span class="tag">Unity</span>
+        <span class="tag">Unreal Engine</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACTO ===================== -->
+  <section id="contacto" class="section section-alt contact">
+    <p class="eyebrow">Contacto</p>
+    <h2>Trabajemos juntos</h2>
+    <p class="hero-sub">¿Buscas a alguien para tu equipo, proyecto o práctica? Escríbeme.</p>
+
+    <div class="contact-links">
+      <!-- REEMPLAZAR: cada href="#" por tu link real -->
+      <a href="mailto:tu-correo@ejemplo.com" class="btn btn-primary">Escríbeme</a>
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="#" target="_blank" rel="noopener">ArtStation</a>
+      <a href="#" target="_blank" rel="noopener">Sketchfab</a>
+      <a href="#" target="_blank" rel="noopener">Instagram</a>
+      <a href="assets/CV.pdf" target="_blank" rel="noopener">Descargar CV</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>© 2026 Maickol. Hecho con HTML, CSS y JS.</p>
+  </footer>
+
+  <!-- ===================== MODAL (detalle de pieza) ===================== -->
+  <div class="modal-overlay" id="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Cerrar">×</button>
+
+      <div class="modal-media placeholder-media">
+        <!-- El JS no rellena esta imagen todavía: cuando tengas los renders,
+             lo ideal es reemplazar esto por un <img> real por pieza. -->
+        <span>Imagen / turnaround de la pieza</span>
+      </div>
+
+      <div class="modal-body">
+        <h3 id="modal-title">Título de la pieza</h3>
+        <p id="modal-desc">Descripción de la pieza.</p>
+        <div class="tag-row" id="modal-tools"></div>
+
+        <div class="modal-links">
+          <a id="modal-artstation" href="#" target="_blank" rel="noopener" class="btn btn-secondary">Ver en ArtStation</a>
+          <a id="modal-sketchfab" href="#" target="_blank" rel="noopener" class="btn btn-secondary">Ver en Sketchfab</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+/* =========================================================
+   VARIABLES — toda la paleta y tipografía vive aquí.
+   Si algún día quieres ajustar un color, este es el único
+   lugar donde tienes que cambiarlo.
+   ========================================================= */
+:root {
+  --bg: #FAF3EC;
+  --surface: #FFFDF9;
+  --accent-primary: #E85D75;   /* rosa frambuesa — botones, acentos principales */
+  --accent-secondary: #3FA796; /* verde-azulado — detalles, hover */
+  --accent-tertiary: #E8A33D;  /* ocre dorado — tags, highlights */
+  --ink: #2E2430;              /* texto principal */
+  --ink-muted: #6B5F66;        /* texto secundario */
+  --border: rgba(46, 36, 48, 0.12);
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-logo: 'Comfortaa', sans-serif;
+
+  --max-width: 1100px;
+  --radius: 16px;
+}
+
+/* =========================================================
+   RESET BÁSICO
+   ========================================================= */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, video { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* Foco visible para navegación con teclado — accesibilidad, no lo quites */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 3px;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0 0 0.5em;
+  line-height: 1.15;
+}
+
+h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+h3 { font-size: 1.3rem; }
+
+p { margin: 0 0 1em; color: var(--ink-muted); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-secondary);
+  margin: 0 0 0.6em;
+}
+
+/* =========================================================
+   UTILIDADES
+   ========================================================= */
+.section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 6rem 1.5rem;
+}
+
+.section-alt { background: var(--surface); }
+.section-alt.section { max-width: none; padding-left: 0; padding-right: 0; }
+.section-alt .section-head,
+.section-alt.contact { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+.section-alt.contact { padding-top: 6rem; padding-bottom: 6rem; }
+
+.section-head { margin-bottom: 2.5rem; }
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.85em 1.8em;
+  border-radius: 100px;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn-primary { background: var(--accent-primary); color: var(--surface); }
+.btn-primary:hover { transform: translateY(-2px); background: #d94e67; }
+
+.btn-secondary {
+  background: transparent;
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+}
+.btn-secondary:hover { background: var(--ink); color: var(--surface); }
+
+.tag, .card-caption .tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  background: var(--accent-tertiary);
+  color: #412402;
+  padding: 0.3em 0.8em;
+  border-radius: 100px;
+}
+
+.skills-row, .tag-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+
+/* Cuando reemplaces un placeholder por una <img> real dentro de un .blob,
+   esta regla hace que la imagen llene la forma orgánica sin deformarse. */
+.blob img, img.blob {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.blob { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; overflow: hidden; }
+.blob-1 { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+.blob-2 { border-radius: 40% 60% 55% 45% / 45% 55% 45% 55%; }
+.blob-3 { border-radius: 55% 45% 65% 35% / 35% 65% 35% 65%; }
+
+.placeholder-media {
+  background: repeating-linear-gradient(
+    135deg, var(--surface), var(--surface) 10px,
+    rgba(63, 167, 150, 0.12) 10px, rgba(63, 167, 150, 0.12) 20px
+  );
+  border: 1.5px dashed var(--accent-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 220px;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 1rem;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(250, 243, 236, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wordmark {
+  font-family: var(--font-logo);
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--accent-primary);
+}
+
+.main-nav { display: flex; gap: 1.8rem; font-size: 0.9rem; font-weight: 500; }
+.main-nav a:hover { color: var(--accent-primary); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.nav-toggle span { width: 22px; height: 2px; background: var(--ink); display: block; }
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 5rem 1.5rem 6rem;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.hero-sub { font-size: 1.05rem; max-width: 42ch; }
+.hero-visual .blob { aspect-ratio: 1 / 1; }
+
+/* =========================================================
+   GALERÍA
+   ========================================================= */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.2rem;
+}
+
+.project-card { cursor: pointer; }
+.project-card .blob {
+  aspect-ratio: 1 / 1;
+  transition: transform 0.2s ease;
+}
+.project-card:hover .blob { transform: scale(1.03); }
+
+.card-caption {
+  margin-top: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.card-caption h3 { font-size: 1rem; margin: 0; }
+
+/* =========================================================
+   ANIMACIÓN
+   ========================================================= */
+.animation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.animation-feature {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.placeholder-video { aspect-ratio: 16 / 9; border-radius: var(--radius); }
+.animation-feature .placeholder-video.blob { border-radius: var(--radius); }
+
+/* =========================================================
+   SOBRE MÍ
+   ========================================================= */
+.about {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 3rem;
+  align-items: center;
+}
+.about-visual .blob { aspect-ratio: 1 / 1; }
+
+/* =========================================================
+   CONTACTO
+   ========================================================= */
+.contact { text-align: center; }
+/* .hero-sub trae un max-width para que el texto no se estire demasiado en el hero,
+   pero eso hace que quede pegado a la izquierda aquí (text-align no centra bloques).
+   margin: 0 auto lo centra como bloque dentro de .contact. */
+.contact .hero-sub { margin-left: auto; margin-right: auto; }
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 1.6rem;
+  margin-top: 2rem;
+}
+.contact-links a:not(.btn) { font-weight: 500; border-bottom: 1.5px solid transparent; }
+.contact-links a:not(.btn):hover { border-color: var(--accent-primary); }
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(46, 36, 48, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 100;
+}
+.modal-overlay[hidden] { display: none; }
+
+.modal {
+  background: var(--surface);
+  border-radius: var(--radius);
+  max-width: 640px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.8rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.modal-media { min-height: 260px; border-radius: var(--radius) var(--radius) 0 0; border: none; }
+.modal-body { padding: 1.8rem; }
+.modal-links { display: flex; gap: 0.8rem; margin-top: 1.4rem; flex-wrap: wrap; }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 800px) {
+  .main-nav { display: none; }
+  .nav-toggle { display: flex; }
+
+  .main-nav.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero, .about { grid-template-columns: 1fr; }
+  .animation-grid { grid-template-columns: 1fr; }
+  .hero-visual { order: -1; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 500px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  .section { padding: 4rem 1.2rem; }
+}
+
+/* Respeta a quienes prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
