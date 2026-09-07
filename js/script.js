@@ -24,6 +24,10 @@ mainNav.querySelectorAll('a').forEach(link => {
    se hace clic, leemos esos datos y los mostramos en el modal.
    ========================================================= */
 const modalOverlay = document.getElementById('modal-overlay');
+const carouselViewport = document.getElementById('carousel-viewport');
+const carouselDots = document.getElementById('carousel-dots');
+const carouselPrev = document.getElementById('carousel-prev');
+const carouselNext = document.getElementById('carousel-next');
 const modalTitle = document.getElementById('modal-title');
 const modalDesc = document.getElementById('modal-desc');
 const modalTools = document.getElementById('modal-tools');
@@ -33,10 +37,62 @@ const modalClose = document.getElementById('modal-close');
 
 const projectCards = document.querySelectorAll('.project-card');
 
+// Estado del carrusel: qué lista de medios estamos mostrando, y en qué posición
+let carouselItems = [];
+let carouselIndex = 0;
+
+function isVideo(path) {
+  return path.trim().toLowerCase().endsWith('.mp4');
+}
+
+function renderCarouselItem() {
+  const path = carouselItems[carouselIndex].trim();
+  carouselViewport.innerHTML = ''; // limpiamos lo que hubiera antes
+
+  if (isVideo(path)) {
+    const video = document.createElement('video');
+    video.src = path;
+    video.controls = true;
+    video.autoplay = true;
+    video.loop = true;
+    video.muted = true; // los navegadores solo autorreproducen si está muted
+    carouselViewport.appendChild(video);
+  } else {
+    const img = document.createElement('img');
+    img.src = path;
+    img.alt = modalTitle.textContent;
+    carouselViewport.appendChild(img);
+  }
+
+  // Actualiza los puntitos: cuál está activo
+  [...carouselDots.children].forEach((dot, i) => {
+    dot.classList.toggle('active', i === carouselIndex);
+  });
+}
+
+function goToSlide(index) {
+  carouselIndex = (index + carouselItems.length) % carouselItems.length; // ciclo infinito
+  renderCarouselItem();
+}
+
 function openModal(card) {
   // Rellenamos el modal con los datos de la tarjeta clickeada
+  carouselItems = card.dataset.media.split(',');
+  carouselIndex = 0;
+
+  // Construye un puntito por cada imagen/video de esta pieza
+  carouselDots.innerHTML = '';
+  carouselItems.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot';
+    dot.setAttribute('aria-label', `Ver elemento ${i + 1}`);
+    dot.addEventListener('click', () => goToSlide(i));
+    carouselDots.appendChild(dot);
+  });
+
   modalTitle.textContent = card.dataset.title;
   modalDesc.textContent = card.dataset.desc;
+  renderCarouselItem();
 
   // Las herramientas vienen separadas por " · ", las convertimos en tags
   modalTools.innerHTML = '';
@@ -57,11 +113,15 @@ function openModal(card) {
 function closeModal() {
   modalOverlay.hidden = true;
   document.body.style.overflow = '';
+  carouselViewport.innerHTML = ''; // corta cualquier video que estuviera sonando/reproduciéndose
 }
 
 projectCards.forEach(card => {
   card.addEventListener('click', () => openModal(card));
 });
+
+carouselPrev.addEventListener('click', () => goToSlide(carouselIndex - 1));
+carouselNext.addEventListener('click', () => goToSlide(carouselIndex + 1));
 
 modalClose.addEventListener('click', closeModal);
 
@@ -70,7 +130,10 @@ modalOverlay.addEventListener('click', (event) => {
   if (event.target === modalOverlay) closeModal();
 });
 
-// Cierra al presionar la tecla Escape
+// Cierra al presionar la tecla Escape, navega con las flechas del teclado
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && !modalOverlay.hidden) closeModal();
+  if (modalOverlay.hidden) return;
+  if (event.key === 'Escape') closeModal();
+  if (event.key === 'ArrowLeft') goToSlide(carouselIndex - 1);
+  if (event.key === 'ArrowRight') goToSlide(carouselIndex + 1);
 });
