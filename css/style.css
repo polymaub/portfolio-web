@@ -68,6 +68,13 @@ p { margin: 0 0 1em; color: var(--ink-muted); }
   margin: 0 0 0.6em;
 }
 
+.location-line {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  margin: -0.3em 0 1em;
+}
+
 /* =========================================================
    UTILIDADES
    ========================================================= */

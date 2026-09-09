@@ -103,8 +103,12 @@ function openModal(card) {
     modalTools.appendChild(span);
   });
 
+  // Si una pieza no tiene link (data-artstation="#" o vacío), ocultamos ese botón en vez de mostrar uno roto
   modalArtstation.href = card.dataset.artstation;
+  modalArtstation.style.display = (card.dataset.artstation && card.dataset.artstation !== '#') ? '' : 'none';
+
   modalSketchfab.href = card.dataset.sketchfab;
+  modalSketchfab.style.display = (card.dataset.sketchfab && card.dataset.sketchfab !== '#') ? '' : 'none';
 
   modalOverlay.hidden = false;
   document.body.style.overflow = 'hidden'; // evita el scroll de fondo mientras el modal está abierto
